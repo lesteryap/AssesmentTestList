@@ -1,0 +1,9 @@
+<!-- The Modal -->
+<div class="modal" [style.display]="popUp.show ? 'block' : 'none'">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="closePopUp()">&times;</span>
+    <h4>Additional Info:</h4>
+    <p class="truncate-nine-line-clamp">{{ popUp.text }}</p>
+  </div>
+</div>

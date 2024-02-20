@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>List Example</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">List Example</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ng-container *ngIf="!paginatedItem; then skeleton;"></ng-container>
+
+  <ng-template #skeleton>
+    <ion-list style="width: 100%; position: fixed">
+      <ion-skeleton-text
+        *ngFor="let item of [1,2,3,4,5,6,7]"
+        animated
+        style="
+          margin: 0.2rem;
+          padding: 0.2em;
+          border-radius: 0.5em;
+          height: 6em;
+        "
+      ></ion-skeleton-text>
+    </ion-list>
+  </ng-template>
+
+  <ion-list>
+    <app-item-piece
+      *ngFor="let item of paginatedItem?.items"
+      [item]="item"
+      (onClickItem)="onClickItem($event)"
+    ></app-item-piece>
+  </ion-list>
+
+  <br />
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingText="Please wait..."
+      loadingSpinner="lines-sharp"
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <app-pop-up [(popUp)]="popUp"></app-pop-up>
+</ion-content>

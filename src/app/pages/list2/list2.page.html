@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Interface</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Interface</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <app-item-piece
+      *ngFor="let item of paginatedItem?.items"
+      [item]="item"
+      (onClickItem)="onClickItem($event)"
+    ></app-item-piece>
+  </ion-list>
+
+  <app-pop-up [(popUp)]="popUp"></app-pop-up>
+</ion-content>
